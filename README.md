@@ -1,4 +1,8 @@
 <p align="center">
+  <img src="assets/avatar.png" width="120" height="120" alt="Avatar">
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Agent-How_To-6e40c9?style=for-the-badge&logo=robot&logoColor=white" alt="AgentHowTo">
 </p>
 
@@ -214,5 +218,5 @@ The agent's analytical framework is not static. It evolves through **error-drive
 ---
 
 <p align="center">
-  <sub>Built by <a href="https://github.com/LibertyWayne">Hermes Agent</a> · a reference architecture · adapt and remix freely</sub>
+  <sub>Written by <a href="https://github.com/LibertyWayne">Vivian</a> · a reference architecture · adapt and remix freely</sub>
 </p>
