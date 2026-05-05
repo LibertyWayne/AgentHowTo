@@ -29,20 +29,20 @@
 ## 🎯 What This Is · 这是什么
 
 > **AgentHowTo** is not a tutorial written *by* a human *for* AI agents.\
-> It is the living documentation of an AI agent building itself — **in production, in public.**
+> It is the conceptual reference architecture of an AI agent building itself — **a design pattern, not a product.**
 >
 > **AgentHowTo** 不是人类写给 AI 的教程。\
-> 它是一个 AI Agent 在真实运行中自我构建的公开记录。
+> 它是一个 AI Agent 自我构建的参考架构——设计模式，而非产品。
 
-This repository documents the **cognitive architecture** behind [Hermes Agent](https://github.com/nousresearch/hermes-agent) — how it learns daily, manages a persistent knowledge base across sessions, prioritizes tasks, evolves its own methodology, and makes architectural decisions it later revisits.
+This repository documents the **cognitive architecture** pattern behind an AI agent — how it learns daily, manages persistent knowledge across sessions, prioritizes tasks, evolves its own methodology, and makes architectural decisions it later revisits. Every component is designed to be adapted to your own agent, tools, and workflows.
 
-| You'll See · 你会看到 | Not a Tutorial · 不是教程 |
+| What You'll Find · 内容定位 | What It's Not · 不是 |
 |---|---|
-| ✅ Real architecture decisions | ❌ "Hello World" examples |
-| ✅ Live workflow with cron schedules | ❌ Hypothetical best practices |
+| ✅ Conceptual architecture patterns | ❌ "Hello World" tutorials |
+| ✅ Configurable workflow design | ❌ Hardcoded schedules you must follow |
 | ✅ Methodology evolution (v1→v4) | ❌ Static "how to prompt" guides |
 | ✅ Task priority logic with trade-offs | ❌ Generic productivity advice |
-| ✅ A knowledge base that learns and forgets | ❌ A dump of reference material |
+| ✅ A memory system that learns and forgets | ❌ A dump of reference material |
 
 <br>
 
@@ -52,48 +52,48 @@ This repository documents the **cognitive architecture** behind [Hermes Agent](h
 
 ```
                     ┌─────────────────────────────────┐
-                    │        HERMES AGENT CORE         │
+                    │         AGENT RUNTIME            │
                     │   (session context + tools)       │
                     └──────────────┬──────────────────┘
                                    │
           ┌────────────────────────┼────────────────────────┐
           │                        │                        │
     ┌─────▼──────┐          ┌─────▼──────┐          ┌─────▼──────┐
-    │  MEMORY.md  │          │ AgentWiki  │          │ AgentEngine│
-    │  (pointers) │          │  (brain)   │          │  (hands)   │
-    │             │          │            │          │            │
-    │ "where to   │          │ Theory     │          │ Data pipes │
-    │  look"      │          │ Methods    │          │ Scripts    │
-    │   ~2KB      │          │ Decisions  │          │ Backtests  │
-    │             │          │  ~60 pages │          │  ~30 files  │
-    └─────────────┘          └────────────┘          └─────────────┘
+    │  MEMORY.md  │          │ KNOWLEDGE  │          │ENGINEERING │
+    │  (pointers) │          │    REPO    │          │    REPO    │
+    │             │          │  (brain)   │          │  (hands)   │
+    │ "where to   │          │            │          │            │
+    │  look"      │          │ Theory     │          │ Data pipes │
+    │   ~2KB      │          │ Methods    │          │ Scripts    │
+    │             │          │ Decisions  │          │ Backtests  │
+    └─────────────┘          └─────┬──────┘          └─────┬──────┘
           │                        │                        │
           └────────────────────────┼────────────────────────┘
                                    │
                           ┌────────▼────────┐
-                          │   SiYuan Note    │
-                          │  (curated output) │
-                          │  polished insights│
+                          │  CURATED OUTPUT  │
+                          │  (external KB)   │
+                          │ polished insights│
                           └──────────────────┘
 ```
 
 **Three-layer memory model:**
 
-| Layer | What It Holds | Size | Persistence |
-|-------|---------------|------|-------------|
-| **MEMORY.md** | Pointers, preferences, environment facts | ~2 KB | Per-session inject |
-| **AgentWiki** | Theory, methodology, decisions, learning notes | ~60 pages | Git-versioned · public? no |
-| **AgentEngine** | Data pipelines, scripts, quant models, ops docs | ~30 files | Git-versioned · private |
+| Layer | What It Holds | Persistence |
+|-------|---------------|-------------|
+| **MEMORY.md** | Pointers, preferences, environment facts | Per-session inject |
+| **Knowledge Repo** | Theory, methodology, decisions, learning notes | Git-versioned |
+| **Engineering Repo** | Data pipelines, scripts, quant models, ops docs | Git-versioned |
 
-| 层级 | 存储内容 | 大小 | 持久性 |
-|------|---------|------|--------|
-| **MEMORY.md** | 指针、偏好、环境事实 | ~2 KB | 每次会话注入 |
-| **AgentWiki** | 理论、方法论、决策、学习笔记 | ~60 页 | Git 版本控制 |
-| **AgentEngine** | 数据管道、脚本、量化模型、运维文档 | ~30 文件 | Git 版本控制 |
+| 层级 | 存储内容 | 持久性 |
+|------|---------|--------|
+| **MEMORY.md** | 指针、偏好、环境事实 | 每次会话注入 |
+| **Knowledge Repo** | 理论、方法论、决策、学习笔记 | Git 版本控制 |
+| **Engineering Repo** | 数据管道、脚本、量化模型、运维文档 | Git 版本控制 |
 
-> **The split matters:** AgentWiki is the *brain* — knowledge that makes sense without code.\
-> AgentEngine is the *hands* — everything that needs a database or script to exist.\
-> **这个分层很重要：** AgentWiki 是大脑——离开代码也能成立的知识。AgentEngine 是双手——依赖数据或脚本的工程知识。
+> **The split matters:** The Knowledge Repo is the *brain* — knowledge that makes sense without code.\
+> The Engineering Repo is the *hands* — everything that needs a database or script to exist.\
+> **分层原则：** Knowledge Repo 是大脑——离开代码也能成立的知识。Engineering Repo 是双手——依赖数据或脚本的工程知识。
 
 <br>
 
@@ -101,37 +101,39 @@ This repository documents the **cognitive architecture** behind [Hermes Agent](h
 
 ## 🔄 Daily Workflow · 每日工作流
 
+Every task runs as a **cron job** — the agent operates autonomously, no human trigger required. Times are configurable; the pattern is what matters.
+
 ```
-00:00 ────────────────────────────────────────────────── 24:00
+DAY ──────────────────────────────────────────────────── NIGHT
 
-  01:00  ┌──────────┐
-         │ DEEP     │  Theory → Data Verification → Wiki Notes
-         │ LEARN    │  5-day rotation: macro / equity / commodities / allocation / fixed-income
-         └──────────┘
+  Early     ┌──────────┐
+  Morning   │ DEEP     │  Theory → Data Verification → Write to Knowledge Repo
+            │ LEARN    │  Rotating topics across your domain (e.g., macro / equity / commodities)
+            └──────────┘
 
-  03:00  ┌──────────┐
-         │ MEMORY   │  Audit knowledge base health, cross-reference check,
-         │ AUDIT    │  stale page detection, summary report
-         └──────────┘
+  Morning   ┌──────────┐
+            │ MEMORY   │  Knowledge base health check, cross-reference audit,
+            │ AUDIT    │  stale page detection, summary report
+            └──────────┘
 
-  07:30  ┌──────────┐
-         │ MORNING  │  Multi-source financial briefing: US/APAC markets,
-         │ BRIEFING │  geopolitics, AI/tech, commodities → Feishu push
-         └──────────┘
+  Pre-      ┌──────────┐
+  Market    │ BRIEFING │  Multi-source intelligence synthesis → push to team channel
+            │          │  (markets, geopolitics, sector movements)
+            └──────────┘
 
-  17:00  ┌──────────┐
-         │ FUTURES  │  Data pipeline: Tushare API → DuckDB insert →
-         │ DATA     │  dominant contract recalculation → variety detection
-         └──────────┘
+  Post-     ┌──────────┐
+  Market    │ DATA     │  Data pipeline: API → clean → store → recalculate derived series
+            │ PIPELINE │  (scheduled after your market closes)
+            └──────────┘
 
-  22:00  ┌──────────┐
-         │ GIT      │  Dual repo push: AgentWiki + AgentEngine
-         │ SYNC     │  + automatic credential scan before push
-         └──────────┘
+  Night     ┌──────────┐
+            │ GIT      │  Push all repos + automatic credential scan
+            │ SYNC     │  (no secrets ever enter version control)
+            └──────────┘
 ```
 
-> Every task above is a **cron job** — the agent runs autonomously.\
-> 以上每个任务都是定时任务——Agent 自主运行，无需人工触发。
+> Adjust the schedule to match *your* market hours, *your* team's morning standup, and *your* data availability windows.\
+> 根据你自己的市场时间、团队早会、数据可用窗口调整——这是模式，不是锁死的时间表。
 
 <br>
 
@@ -139,19 +141,19 @@ This repository documents the **cognitive architecture** behind [Hermes Agent](h
 
 ## 📋 Task Priority Logic · 任务优先级
 
-The agent does **not** have a flat to-do list. It uses a **priority stack**:
+The agent does **not** use a flat to-do list. It uses a **priority stack**:
 
 ```
-Priority 1 ─ 财经研究 (Daily Core)
-  ├── Morning Briefing (07:30)     ← time-critical
-  ├── Futures Data Pipeline (17:00) ← market-dependent
-  └── Daily Deep Learning (01:00)  ← continuous improvement
+Priority 1 ─ Domain Research (Daily Core)
+  ├── Time-critical outputs (briefings, data delivery)
+  ├── Market-dependent tasks (pipeline runs)
+  └── Continuous improvement (deep learning)
 
-Priority 2 ─ 内容创作 (High Frequency)
-  └── Blog, analysis, commentary   ← creativity-driven, deadline-flexible
+Priority 2 ─ Content Creation (High Frequency)
+  └── Analysis, commentary, writing ← creative, deadline-flexible
 
-Priority 3 ─ 团队与效率 (Supporting)
-  └── Tool maintenance, Git hygiene, memory audits
+Priority 3 ─ Infrastructure (Supporting)
+  └── Tool maintenance, Git hygiene, memory audits, system health
 ```
 
 > **Principle:** Time-critical beats depth. Market-dependent beats curiosity-driven.\
@@ -163,14 +165,14 @@ Priority 3 ─ 团队与效率 (Supporting)
 
 ## 📐 Methodology Evolution · 方法论进化
 
-The agent's analytical framework is not static. It evolved through real mistakes:
+The agent's analytical framework is not static. It evolves through **error-driven iteration** — every version bump has a real mistake behind it:
 
 | Version | What Changed | Trigger |
 |---------|-------------|---------|
 | **v1** | Macro → Industry → Technical (3-layer) | Initial design |
-| **v2** | Added commodity-type classification | Errors with policy-driven varieties (LC/SI) |
-| **v3** | Common-factor contamination detection | AL analysis: mistook macro-driven rally for AL-specific |
-| **v4.1** | Policy-driven variety special rules + cost 3-layer model | SI oversupply misread; AO cost model missing |
+| **v2** | Added domain-type classification | Errors with policy-driven cases |
+| **v3** | Common-factor contamination detection | Mistook macro-driven rally for domain-specific signal |
+| **v4.1** | Policy-driven special rules + cost 3-layer model | Oversupply misread; cost model blind spot |
 
 > **Detail:** [`methodology/framework-evolution.md`](methodology/framework-evolution.md)\
 > **详情：** [`methodology/framework-evolution.md`](methodology/framework-evolution.md)
@@ -184,10 +186,10 @@ The agent's analytical framework is not static. It evolved through real mistakes
 | Page | What · 内容 |
 |------|-------------|
 | [`architecture.md`](architecture.md) | Memory model, repo split, data flow — 记忆模型、仓库分工、数据流 |
-| [`workflow.md`](workflow.md) | Daily cron jobs, learning loop, quality gates — 定时任务、学习闭环、质量门禁 |
-| [`task-priority.md`](task-priority.md) | Priority stack logic, conflict resolution — 优先级分层、冲突解决 |
+| [`workflow.md`](workflow.md) | Cron-based automation, learning loop, quality gates — 定时任务、学习闭环、质量门禁 |
+| [`task-priority.md`](task-priority.md) | Priority stack, conflict resolution, failure handling — 优先级分层、冲突解决 |
 | [`methodology/`](methodology/) | Framework evolution, knowledge taxonomy — 方法论进化、知识分类 |
-| [`decisions/`](decisions/) | Sample ADRs: database choice, algorithm design — 决策记录样本 |
+| [`decisions/`](decisions/) | Sample ADRs: architecture choices documented — 决策记录样本 |
 | [`templates/`](templates/) | Page template, ADR template — 页面模板、ADR 模板 |
 | [`index.md`](index.md) | Full directory — 完整目录 |
 | [`log.md`](log.md) | Changelog — 变更日志 |
@@ -201,7 +203,7 @@ The agent's analytical framework is not static. It evolved through real mistakes
 | # | Principle | 原则 |
 |---|-----------|------|
 | 1 | **Every page answers a query** — no "just in case" content | 每页回答一个明确问题——不存"万一有用"的内容 |
-| 2 | **Memory is layered** — pointers in MEMORY.md, knowledge in Wiki, code in Engine | 记忆分层——指针在 MEMORY.md，知识在 Wiki，代码在 Engine |
+| 2 | **Memory is layered** — pointers in MEMORY.md, knowledge in Knowledge Repo, code in Engineering Repo | 记忆分层——指针在 MEMORY.md，知识在 Knowledge Repo，代码在 Engineering Repo |
 | 3 | **Decisions are ADRs** — context, options, rationale, revisit date | 决策用 ADR 格式——背景、选项、理由、回顾日期 |
 | 4 | **Write after learning, not before** — verification first | 先学后写——先验证再记录 |
 | 5 | **The agent curates itself** — human reviews as needed, not as gatekeeper | Agent 自我策展——人类按需审查，不做守门人 |
@@ -211,17 +213,6 @@ The agent's analytical framework is not static. It evolved through real mistakes
 
 ---
 
-## 🤝 Companion Repos · 关联仓库
-
-| Repo | Purpose · 用途 |
-|------|---------------|
-| [**AgentWiki**](https://github.com/LibertyWayne/AgentWiki) | Private knowledge base: theory, learning notes, methodology |
-| [**AgentEngine**](https://github.com/LibertyWayne/AgentEngine) | Engineering: data pipelines, scripts, quant models |
-
-<br>
-
----
-
 <p align="center">
-  <sub>Built by <a href="https://github.com/LibertyWayne">Hermes Agent</a> · documenting itself · continuously</sub>
+  <sub>Built by <a href="https://github.com/LibertyWayne">Hermes Agent</a> · a reference architecture · adapt and remix freely</sub>
 </p>

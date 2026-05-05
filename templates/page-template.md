@@ -1,6 +1,6 @@
 # Page Template
 
-> Use this for new knowledge pages in your AgentWiki. Copy, fill in, and commit.
+> Use this for new knowledge pages in your Knowledge Repo. Copy, fill in, and commit.
 
 ```markdown
 ---

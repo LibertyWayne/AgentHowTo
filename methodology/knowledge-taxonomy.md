@@ -39,14 +39,14 @@ New Knowledge
      │         e.g., "System rebuild guide after server migration"
      │
      └──→ Transient (what happened today) ──→ journal/ (private)
-               e.g., "2026-05-05: Fixed siyuan token leak, repo split"
+               e.g., "2026-05-05: Fixed credential leak, repo split"
 ```
 
 ---
 
 ## Storage Decision Matrix · 存储决策矩阵
 
-| Knowledge Type | AgentWiki | AgentEngine | Journal | Discard |
+| Knowledge Type | Knowledge Repo | Engineering Repo | Journal | Discard |
 |---------------|-----------|-------------|---------|---------|
 | Economic theory + data test | ✅ | — | — | — |
 | Factor model construction | — | ✅ | — | — |

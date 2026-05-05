@@ -4,6 +4,21 @@
 
 ---
 
+## [2026-05-05] refactor | Genericized for public reference architecture
+
+**Changes across all pages:**
+- Removed all references to private repos (AgentWiki, AgentEngine) → replaced with generic "Knowledge Repo" / "Engineering Repo"
+- SiYuan Note → "Curated Output" / "external knowledge base"
+- Hardcoded cron times (01:00, 03:00, 07:30, 17:00, 22:00) → configurable time blocks (Early AM, Morning, Pre-Market, Post-Market, Night)
+- Removed "Companion Repos" section from README and index
+- Added "adapt to your own setup" notes throughout
+- Workflow examples now explicitly marked as "example rotation" / "example structure"
+- Data flow diagram genericized (Tushare → "Market API", Feishu → "Team Channel")
+
+**Positioning:** This is now a conceptual reference architecture — adapt the pattern to your own agent, tools, and workflow.
+
+---
+
 ## [2026-05-05] init | Repository created
 
 **New pages:**

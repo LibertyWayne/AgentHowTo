@@ -1,22 +1,23 @@
 # Workflow · 工作流
 
-> *How an AI agent structures its day — autonomous cron jobs, learning loops, and quality gates.*
+> *How an AI agent structures its day — cron-based automation, learning loops, and quality gates. All times are configurable; the pattern is the design pattern.*
 
 ---
 
 ## The Daily Rhythm · 每日节奏
 
 ```
- TIME    TASK                    TYPE              FREQUENCY
-──────   ─────────────────────   ────────────────  ───────────
- 01:00   Daily Deep Learning     Research          Mon–Fri
- 03:00   Memory Audit            Maintenance       Daily
- 07:30   Morning Briefing        Production        Mon–Fri
- 17:00   Futures Data Pipeline   Production        Mon–Fri
- 22:00   Git Sync                Maintenance       Daily
+ TIME BLOCK              TASK                    TYPE              FREQUENCY
+───────────  ──────────────────────────────  ────────────────  ───────────
+ Early AM    Deep Learning                   Research          Daily/Mon–Fri
+ Morning     Memory Audit                    Maintenance       Daily
+ Pre-Market  Intelligence Briefing            Production        Mon–Fri
+ Post-Market Data Pipeline                   Production        Mon–Fri
+ Night       Git Sync + Security Scan        Maintenance       Daily
 ```
 
-Every task is a **cron job** — no human trigger required. The agent wakes up, runs the task, produces output, and goes back to waiting.
+> **Set the times to match your market hours, your team's schedule, and your data availability.**\
+> **根据你的市场时间、团队日程、数据窗口设置具体时间——这个顺序和间隔才是设计重点。**
 
 ---
 
@@ -27,36 +28,39 @@ Every task is a **cron job** — no human trigger required. The agent wakes up, 
 ```
                     ┌──────────┐
                     │  THEORY   │  Load a new concept from the learning queue
-                    └────┬─────┘  (e.g., "cost-of-carry model")
+                    └────┬─────┘
                          │
                     ┌────▼─────┐
                     │  VERIFY   │  Test against real market data
-                    └────┬─────┘  (e.g., Does carry predict basis? On which varieties?)
+                    └────┬─────┘
                          │
                     ┌────▼─────┐
-                    │  WRITE    │  Structured note → AgentWiki learning/
+                    │  WRITE    │  Structured note → Knowledge Repo learning/
                     └────┬─────┘  + cross-reference to related pages
                          │
                     ┌────▼─────┐
-                    │  PUBLISH  │  Curated insight → SiYuan Note
-                    └────┬─────┘  (external KB for polished output)
+                    │  CURATE   │  Polished insight → external curated KB
+                    └────┬─────┘
                          │
                     ┌────▼─────┐
-                    │  REVISIT  │  5 days later: is the conclusion still valid?
-                    └──────────┘  (checks for staleness, updates if needed)
+                    │  REVISIT  │  N days later: is the conclusion still valid?
+                    └──────────┘
 ```
 
-### 5-Day Rotation · 五日轮转
+### Topic Rotation · 主题轮转
 
-The agent doesn't learn random topics. It follows a structured rotation to cover the full investment research landscape:
+The agent follows a structured rotation to cover your domain comprehensively. Design your own rotation based on your research scope:
 
-| Day | Domain | Example Topics |
-|-----|--------|---------------|
-| **1** | Macroeconomics + Fixed Income | GDP, inflation, yield curves, credit cycles |
-| **2** | Equities + Multi-Factor | Valuation models, factor zoo, style rotation |
-| **3** | Commodity Futures | Cost models, term structure, basis trading |
-| **4** | Asset Allocation | Risk parity, tactical allocation, rebalancing |
-| **5** | Cross-Domain Integration | Combined frameworks, multi-asset signals |
+| Day | Domain (example) | Topics |
+|-----|-----------------|--------|
+| **1** | Macro + Fixed Income | GDP, inflation, yield curves, credit cycles |
+| **2** | Equities + Factors | Valuation models, factor analysis, style rotation |
+| **3** | Commodities | Cost models, term structure, basis trading |
+| **4** | Asset Allocation | Risk parity, tactical shifts, rebalancing |
+| **5** | Cross-Domain | Combined frameworks, multi-asset signals |
+
+> *This is an example rotation for a financial research agent. Adapt the domains and cadence to your field.*\
+> *这是一个金融研究 Agent 的示例轮转。根据你的领域调整主题和频率。*
 
 ### Quality Gates · 质量门禁
 
@@ -64,15 +68,15 @@ Before a learning note is committed, it must pass:
 
 | Gate | Check |
 |------|-------|
-| **Data verification** | Is the theory tested against real market data? |
-| **Common-factor check** | Am I attributing a factor-driven move to a variety-specific cause? |
-| **Cross-reference** | Does this note link to related pages in the wiki? |
+| **Data verification** | Is the theory tested against real data? |
+| **Common-factor check** | Am I attributing a factor-driven move to a case-specific cause? |
+| **Cross-reference** | Does this note link to related pages? |
 | **Frontmatter** | Does it have YAML metadata (title, date, tags, related)? |
 | **No layer-jumping** | Am I mixing macro conclusions with micro data without the intermediate layer? |
 
 ---
 
-## Morning Briefing · 财经早报
+## Intelligence Briefing · 情报简报
 
 > Production output — the agent's most visible daily deliverable.
 
@@ -80,64 +84,64 @@ Before a learning note is committed, it must pass:
 Sources                    Processing                  Output
 ───────                    ──────────                  ──────
 
-Bloomberg  ────┐
-WSJ         ───┤
-Reuters     ───┤           ┌───────────────┐          ┌──────────┐
-CLS         ───┼──→ Fetch →│  Multi-source │──→ Push →│  Feishu  │
-WSCN        ───┤           │  Synthesis    │          │  Channel │
-EastMoney   ───┤           └───────────────┘          └──────────┘
-SunSirs     ───┘
+News API 1  ────┐
+News API 2  ────┤
+Wire 1       ───┤           ┌───────────────┐          ┌──────────┐
+Wire 2       ───┼──→ Fetch →│  Multi-source │──→ Push →│  Team    │
+Market Data  ──┤           │  Synthesis    │          │  Channel │
+Sector Data  ──┤           └───────────────┘          └──────────┘
+Specialty    ──┘
 ```
 
-**Structure:**
-1. US Markets (overnight close + key movers)
-2. Geopolitics & Macro (Fed, PBOC, major policies)
-3. APAC Markets (Japan, HK, China pre-market)
-4. A-Share & Commodities (sector rotation, key futures)
-5. AI & Technology (model releases, regulatory updates)
+**Structure (example):**
+1. Overnight markets summary
+2. Geopolitics & macro developments
+3. Regional market preview
+4. Sector & asset class movements
+5. Technology & emerging trends
 
-**Format:** Plain text (Feishu compatibility) · ~800 words · delivered 07:30 CST
+**Format:** Plain text for maximum compatibility · Concise · Delivered before your team's morning standup.
 
 ---
 
-## Futures Data Pipeline · 期货数据管道
+## Data Pipeline · 数据管道
 
 ```
-Tushare API ──→ Data Cleaning ──→ DuckDB INSERT ──→ Dominant Map Recalc ──→ New Variety Detection
-     (proxy)        (validation)      (incremental)       (v6: vol + 115%)        (auto-add)
+Market API ──→ Data Cleaning ──→ Database INSERT ──→ Derived Series Recalc ──→ Anomaly Detection
+                  (validation)      (incremental)         (algorithm vN)           (auto-flag)
 ```
 
-Details in [Architecture → Data Flow](architecture.md#data-flow--数据流).
+Scheduled after your market closes. Details in [Architecture → Data Flow](architecture.md#data-flow--数据流).
 
 ---
 
 ## Memory Audit · 记忆审计
 
-Daily health check of the knowledge base:
+Routine health check of the knowledge base:
 
 | Check | Method |
 |-------|--------|
-| **Stale pages** | Pages untouched >7 days flagged |
+| **Stale pages** | Pages untouched >N days flagged |
 | **Broken links** | Cross-reference validation |
 | **Duplicate content** | Title/heading collision detection |
-| **Index accuracy** | Index.md matches actual file tree |
+| **Index accuracy** | Index matches actual file tree |
 | **Frontmatter completeness** | Missing required fields reported |
 
-Report delivered as Feishu message at 03:00 CST daily.
+Report delivered to your team channel.
 
 ---
 
 ## Git Hygiene · 版本控制纪律
 
 ```
-22:00 ──→ git_sync.sh ──→ Security Scan ──→ Push Both Repos
+Night ──→ git_sync.sh ──→ Security Scan ──→ Push All Repos
                                      │
                                      ▼
                           Pattern: (?i)(api[_-]?key|token|secret|password|auth)
                           If found → ABORT + alert
 ```
 
-Both AgentWiki and AgentEngine are pushed nightly. The sync script includes an automatic credential scan — no API key or token ever enters GitHub.
+All repos are pushed on schedule. The sync script includes an automatic credential scan — no API key or token ever enters version control.
 
 ---
 

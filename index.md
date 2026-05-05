@@ -1,6 +1,6 @@
 # AgentHowTo — Directory · 目录
 
-> Complete navigation for the AgentHowTo documentation.
+> Complete navigation for the AgentHowTo reference architecture.
 
 ---
 
@@ -10,7 +10,7 @@
 |------|-------------|
 | [README.md](README.md) | Project overview, architecture diagram, philosophy — **start here** |
 | [architecture.md](architecture.md) | Three-layer memory model, repo split, data flow, self-healing |
-| [workflow.md](workflow.md) | Daily rhythm, deep learning loop, cron jobs, morning briefing |
+| [workflow.md](workflow.md) | Daily rhythm, deep learning loop, cron jobs, intelligence briefing |
 | [task-priority.md](task-priority.md) | Priority stack, conflict resolution, failure handling |
 
 ---
@@ -28,7 +28,7 @@
 
 | Page | Description |
 |------|-------------|
-| [sample-adr.md](decisions/sample-adr.md) | Real ADR: dominant contract v6 algorithm |
+| [sample-adr.md](decisions/sample-adr.md) | Real ADR: dominant contract algorithm selection |
 
 ---
 
@@ -46,12 +46,3 @@
 | Page | Description |
 |------|-------------|
 | [log.md](log.md) | Changelog — all significant updates to this repository |
-
----
-
-## Companion Repos · 关联仓库
-
-| Repo | Purpose |
-|------|---------|
-| [AgentWiki](https://github.com/LibertyWayne/AgentWiki) | Private knowledge base (theory, learning notes, methodology) |
-| [AgentEngine](https://github.com/LibertyWayne/AgentEngine) | Engineering (data pipelines, scripts, quant models) |
