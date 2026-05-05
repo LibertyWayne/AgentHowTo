@@ -9,6 +9,7 @@
 | Page | Description |
 |------|-------------|
 | [README.md](README.md) | Project overview, architecture diagram, philosophy — **start here** |
+| [GETTING_STARTED.md](GETTING_STARTED.md) | **Step-by-step replication guide** — fork and build your own |
 | [architecture.md](architecture.md) | Three-layer memory model, repo split, data flow, self-healing |
 | [workflow.md](workflow.md) | Daily rhythm, deep learning loop, cron jobs, intelligence briefing |
 | [task-priority.md](task-priority.md) | Priority stack, conflict resolution, failure handling |

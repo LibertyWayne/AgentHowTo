@@ -4,6 +4,13 @@
 
 ---
 
+## [2026-05-05] feat | Added step-by-step replication guide
+
+- `GETTING_STARTED.md` — 8-step tutorial: fork → MEMORY.md → Knowledge Repo → configure agent → cron workflow → Git hygiene → domain customization → verification checklist
+- Added to README navigation (EN + CN) and index.md
+
+---
+
 ## [2026-05-05] refactor | Genericized for public reference architecture
 
 **Changes across all pages:**

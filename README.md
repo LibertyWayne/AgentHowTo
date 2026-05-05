@@ -185,6 +185,7 @@ The agent improves by **making mistakes and refusing to repeat them.**
 
 | Page | What |
 |------|------|
+| **[`GETTING_STARTED.md`](GETTING_STARTED.md)** | **👈 Start here:** step-by-step replication guide |
 | [`architecture.md`](architecture.md) | Three-layer memory model, repo split, data flow |
 | [`workflow.md`](workflow.md) | Five-phase daily pattern, quality gates, sync |
 | [`task-priority.md`](task-priority.md) | Priority framework, conflict resolution, failure handling |
@@ -354,6 +355,7 @@ Agent 不靠读更好的论文变聪明。靠**犯错误并拒绝重犯同样的
 
 | 页面 | 内容 |
 |------|------|
+| **[`GETTING_STARTED.md`](GETTING_STARTED.md)** | **👈 从这里开始：** 一步步复刻指南 |
 | [`architecture.md`](architecture.md) | 三层记忆模型、仓库分工、数据流 |
 | [`workflow.md`](workflow.md) | 五阶段工作流模式、质量门禁、同步 |
 | [`task-priority.md`](task-priority.md) | 优先级框架、冲突解决、失败处理 |
