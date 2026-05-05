@@ -1,148 +1,204 @@
 # Workflow · 工作流
 
-> *How an AI agent structures its day — cron-based automation, learning loops, and quality gates. All times are configurable; the pattern is the design pattern.*
+> *A universal five-phase daily pattern for any AI agent. Times and content are configurable. The pattern is the architecture.*
 
 ---
 
-## The Daily Rhythm · 每日节奏
+## The Five Phases · 五阶段
+
+Every agent, regardless of domain, follows the same five-phase daily rhythm. What changes is what each phase does in *your* context.
 
 ```
- TIME BLOCK              TASK                    TYPE              FREQUENCY
-───────────  ──────────────────────────────  ────────────────  ───────────
- Early AM    Deep Learning                   Research          Daily/Mon–Fri
- Morning     Memory Audit                    Maintenance       Daily
- Pre-Market  Intelligence Briefing            Production        Mon–Fri
- Post-Market Data Pipeline                   Production        Mon–Fri
- Night       Git Sync + Security Scan        Maintenance       Daily
+ PHASE        PURPOSE                          CONFIGURABLE
+───────  ───────────────────────────────  ─────────────────────
+ LEARN    Study new material, verify       Your domain + cadence
+          against data, write structured
+          notes to Knowledge Repo
+
+ AUDIT    Scan knowledge base health:      Your freshness
+          stale pages, broken links,        thresholds
+          duplicates, index accuracy
+
+ PRODUCE  Synthesize into a deliverable    Your audience + channel
+          for your team or users
+
+ MAINTAIN Ingest inputs, run pipelines,     Your data sources
+          update derived outputs
+
+ SYNC     Push repos + credential scan     Your Git repos
 ```
 
-> **Set the times to match your market hours, your team's schedule, and your data availability.**\
-> **根据你的市场时间、团队日程、数据窗口设置具体时间——这个顺序和间隔才是设计重点。**
+> **Phases, not times.** How you schedule them depends on when your data arrives, when your team needs output, and when compute is cheapest. Set your own cron.\
+> **阶段，不是时间。** 怎么排取决于你的数据何时到、团队何时需要产出、算力何时最便宜。自己设 cron。
 
 ---
 
-## Deep Learning Loop · 深度学习闭环
+## Phase 1: LEARN — The Learning Loop · 学习闭环
 
-> *The heart of the system: theory → verification → write → revisit.*
+> *Theory → Verification → Write → Revisit*
 
 ```
                     ┌──────────┐
-                    │  THEORY   │  Load a new concept from the learning queue
+                    │  STUDY   │  Load new material from the learning queue
                     └────┬─────┘
                          │
                     ┌────▼─────┐
-                    │  VERIFY   │  Test against real market data
+                    │  VERIFY  │  Test against real data in your domain
                     └────┬─────┘
                          │
                     ┌────▼─────┐
-                    │  WRITE    │  Structured note → Knowledge Repo learning/
+                    │  WRITE   │  Structured note → Knowledge Repo
                     └────┬─────┘  + cross-reference to related pages
                          │
                     ┌────▼─────┐
-                    │  CURATE   │  Polished insight → external curated KB
+                    │  CURATE  │  Polished insight → external curated KB
                     └────┬─────┘
                          │
                     ┌────▼─────┐
-                    │  REVISIT  │  N days later: is the conclusion still valid?
+                    │ REVISIT  │  Later: is the conclusion still valid?
                     └──────────┘
 ```
 
-### Topic Rotation · 主题轮转
+```
+┌─────────────────────────────────────────────────────────────┐
+│ Example: Financial Research Agent                           │
+│                                                             │
+│ STUDY  — New paper on yield curve dynamics                  │
+│ VERIFY — Test against market data: does the model hold?     │
+│ WRITE  — Structured note → learning/fixed_income/           │
+│ CURATE — Key insight → external knowledge base for team     │
+│ REVISIT — 5 days later: still valid under new data?         │
+└─────────────────────────────────────────────────────────────┘
+```
 
-The agent follows a structured rotation to cover your domain comprehensively. Design your own rotation based on your research scope:
+### Rotating Topics · 主题轮转
 
-| Day | Domain (example) | Topics |
-|-----|-----------------|--------|
-| **1** | Macro + Fixed Income | GDP, inflation, yield curves, credit cycles |
-| **2** | Equities + Factors | Valuation models, factor analysis, style rotation |
-| **3** | Commodities | Cost models, term structure, basis trading |
-| **4** | Asset Allocation | Risk parity, tactical shifts, rebalancing |
-| **5** | Cross-Domain | Combined frameworks, multi-asset signals |
+Design a rotation that covers your domain comprehensively:
 
-> *This is an example rotation for a financial research agent. Adapt the domains and cadence to your field.*\
-> *这是一个金融研究 Agent 的示例轮转。根据你的领域调整主题和频率。*
+| Day | Domain (example: financial research) |
+|-----|--------------------------------------|
+| **1** | Macro + Fixed Income |
+| **2** | Equities + Factors |
+| **3** | Commodities |
+| **4** | Asset Allocation |
+| **5** | Cross-Domain Integration |
+
+> *Your rotation will look different. A coding agent might rotate: languages → frameworks → architecture → testing → DevOps.*\
+> *你的轮转会不一样。编程 Agent 可能是：语言 → 框架 → 架构 → 测试 → DevOps。*
 
 ### Quality Gates · 质量门禁
 
-Before a learning note is committed, it must pass:
+Before a learning note is committed:
 
 | Gate | Check |
 |------|-------|
-| **Data verification** | Is the theory tested against real data? |
-| **Common-factor check** | Am I attributing a factor-driven move to a case-specific cause? |
-| **Cross-reference** | Does this note link to related pages? |
-| **Frontmatter** | Does it have YAML metadata (title, date, tags, related)? |
-| **No layer-jumping** | Am I mixing macro conclusions with micro data without the intermediate layer? |
+| **Verification** | Theory tested against real data? |
+| **Common-factor** | Attributing a shared factor to a local cause? |
+| **Cross-reference** | Links to related pages in the Knowledge Repo? |
+| **Metadata** | YAML frontmatter (title, date, tags, related)? |
+| **Layer discipline** | Not mixing macro conclusions with micro data? |
 
 ---
 
-## Intelligence Briefing · 情报简报
-
-> Production output — the agent's most visible daily deliverable.
-
-```
-Sources                    Processing                  Output
-───────                    ──────────                  ──────
-
-News API 1  ────┐
-News API 2  ────┤
-Wire 1       ───┤           ┌───────────────┐          ┌──────────┐
-Wire 2       ───┼──→ Fetch →│  Multi-source │──→ Push →│  Team    │
-Market Data  ──┤           │  Synthesis    │          │  Channel │
-Sector Data  ──┤           └───────────────┘          └──────────┘
-Specialty    ──┘
-```
-
-**Structure (example):**
-1. Overnight markets summary
-2. Geopolitics & macro developments
-3. Regional market preview
-4. Sector & asset class movements
-5. Technology & emerging trends
-
-**Format:** Plain text for maximum compatibility · Concise · Delivered before your team's morning standup.
-
----
-
-## Data Pipeline · 数据管道
-
-```
-Market API ──→ Data Cleaning ──→ Database INSERT ──→ Derived Series Recalc ──→ Anomaly Detection
-                  (validation)      (incremental)         (algorithm vN)           (auto-flag)
-```
-
-Scheduled after your market closes. Details in [Architecture → Data Flow](architecture.md#data-flow--数据流).
-
----
-
-## Memory Audit · 记忆审计
+## Phase 2: AUDIT — Memory Health · 记忆审计
 
 Routine health check of the knowledge base:
 
 | Check | Method |
 |-------|--------|
-| **Stale pages** | Pages untouched >N days flagged |
+| **Stale pages** | Pages untouched > N days flagged |
 | **Broken links** | Cross-reference validation |
-| **Duplicate content** | Title/heading collision detection |
+| **Duplicates** | Title/heading collision detection |
 | **Index accuracy** | Index matches actual file tree |
-| **Frontmatter completeness** | Missing required fields reported |
+| **Metadata gaps** | Missing required frontmatter fields |
 
 Report delivered to your team channel.
 
 ---
 
-## Git Hygiene · 版本控制纪律
+## Phase 3: PRODUCE — Output Generation · 产出生成
 
 ```
-Night ──→ git_sync.sh ──→ Security Scan ──→ Push All Repos
-                                     │
-                                     ▼
-                          Pattern: (?i)(api[_-]?key|token|secret|password|auth)
-                          If found → ABORT + alert
+Sources                Processing              Output
+───────                ──────────              ──────
+
+Source A  ────┐
+Source B  ────┤
+Source C  ────┼──→ Fetch → Synthesize ──→ Push → Team Channel
+Source D  ────┤
+Source E  ────┘
 ```
 
-All repos are pushed on schedule. The sync script includes an automatic credential scan — no API key or token ever enters version control.
+```
+┌─────────────────────────────────────────────────────────────┐
+│ Example: Financial Research Agent                           │
+│                                                             │
+│ Sources — Bloomberg, WSJ, CLS, sector data                  │
+│ Output  — Morning briefing: markets + macro + sector moves  │
+│ Channel — Team messaging platform                           │
+│ Format  — Plain text for maximum compatibility              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Structure your output around your audience's needs.** A coding agent produces code reviews. A research agent produces briefings. A creative agent produces drafts.
 
 ---
 
-> **Next:** [Task Priority · 任务优先级](task-priority.md) — how the agent decides what to do when conflicts arise
+## Phase 4: MAINTAIN — Data & Infrastructure · 数据与基础设施
+
+```
+API ──→ Clean ──→ Store ──→ Recalculate Derived ──→ Detect Anomalies
+            (validate)   (incremental)   (algorithm vN)       (auto-flag)
+```
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ Example: Financial Research Agent                           │
+│                                                             │
+│ Market data API → validation → database INSERT              │
+│ → dominant contract recalculation → continuous series views │
+│                                                             │
+│ Scheduled after market close.                               │
+└─────────────────────────────────────────────────────────────┘
+```
+
+Run this phase when your input data becomes available — after market close, after a build completes, after a crawl finishes.
+
+---
+
+## Phase 5: SYNC — Version Control · 版本同步
+
+```
+SYNC ──→ Security Scan ──→ Push All Repos
+                    │
+                    ▼
+         Pattern: (?i)(api[_-]?key|token|secret|password|auth)
+         If found → ABORT + alert
+```
+
+All repos pushed on schedule. The sync script includes an automatic credential scan — no secret ever enters version control.
+
+---
+
+## Designing Your Schedule · 设计你的时间表
+
+The five phases need spacing to avoid collisions:
+
+```
+LEARN ──── AUDIT ──── PRODUCE ──── MAINTAIN ──── SYNC
+  │   gap    │   gap    │    gap     │    gap     │
+```
+
+**Principles:**
+- Space phases with generous gaps at first; tighten as you learn your agent's runtime
+- `PRODUCE` should run before your team's standup
+- `MAINTAIN` should run after your input data arrives
+- `LEARN` and `AUDIT` run during off-peak hours
+- `SYNC` runs last — everything else must finish first
+
+> **Start loose, tighten later.** Your agent's first week should have 2-hour gaps between phases. Observe actual runtimes, then compress.\
+> **先松后紧。** 第一周每个阶段间隔 2 小时。观测实际运行时间，再压缩。
+
+---
+
+> **Next:** [Task Priority · 任务优先级](task-priority.md) — how the agent resolves conflicts

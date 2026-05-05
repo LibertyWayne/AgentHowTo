@@ -1,6 +1,6 @@
 # Methodology Evolution · 方法论进化
 
-> *How the agent's analytical framework improves through real mistakes — not through planned upgrades, but through error-driven iteration.*
+> *How an AI agent's analytical framework improves — not through planned upgrades, but through error-driven iteration.*
 
 ---
 
@@ -8,41 +8,54 @@
 
 > **Every version bump has a corpse.** The agent doesn't upgrade because it "read a better paper." It upgrades because it made a mistake, traced the root cause, and changed the framework so that mistake can't happen again.
 
----
-
-## Version History
-
-### v1.0 — Three-Layer Architecture (Initial)
-
-```
-Macro → Industry → Technical
-  ↑        ↑          ↑
-direction  space      timing
-```
-
-**Design:** Classical top-down. Macro sets the direction, industry determines relative value, technicals pick entry/exit.
-
-**Problem discovered:** All commodities treated identically. A policy-driven variety (lithium carbonate) doesn't behave like a supply-driven one (copper).
+This principle is domain-agnostic. A coding agent upgrades its debugging framework after missing a bug class. A research agent upgrades its analysis framework after a bad call. The *mechanism* is the same.
 
 ---
 
-### v2.0 — Commodity-Type Classification
+## The Pattern · 模式
 
 ```
-                   ┌─ Supply-driven (CU, ZN, AL → cost curve matters)
-Macro ──→ Type ───┼─ Demand-driven (RB, I → macro cycle matters)
-                   └─ Policy-driven (LC, SI → regulatory signal matters)
-                            │
-                            ▼
-                       Industry Analysis
-                            │
-                            ▼
-                       Technicals
+1. Error occurs     →  Real output was wrong. Not hypothetical.
+2. Root cause found →  Not "I was wrong" — "the framework was blind to this case."
+3. Rule added       →  A specific check, not a vague principle.
+4. Tested backward  →  Would this rule have caught past errors?
+5. Version bump     →  Old version archived. Never deleted.
 ```
 
-**Added:** Commodity classification layer between macro and industry. Each type gets a different analytical weight distribution.
+---
 
-**Trigger:** Lithium carbonate analysis on 2026-04-26 — misread a policy announcement as a supply signal. The framework didn't distinguish between supply-side and policy-side catalysts.
+## Example: A Financial Research Agent's Evolution
+
+> *This is one domain's evolution. Your domain will have different versions. The pattern — error → root cause → rule → test → bump — is what matters.*
+
+### v1.0 — Basic Layered Approach
+
+```
+Context → Analysis → Output
+   ↑         ↑         ↑
+  scope    method    delivery
+```
+
+**Design:** Simple linear flow. Works for straightforward cases.
+
+**Problem:** All cases treated identically. Different problem types need different approaches.
+
+---
+
+### v2.0 — Type Classification
+
+```
+              ┌─ Type A (standard approach)
+Context ──→ Type ──┼─ Type B (different weights)
+              └─ Type C (special rules)
+                      │
+                      ▼
+                  Analysis
+```
+
+**Added:** Classification layer between context and analysis. Different types get different analytical weights.
+
+**Trigger:** Edge cases misclassified — applied standard approach where a specialized one was needed.
 
 ---
 
@@ -51,89 +64,73 @@ Macro ──→ Type ───┼─ Demand-driven (RB, I → macro cycle matter
 ```
 Before analysis:
   ┌──────────────────────────────────────┐
-  │ Check: Is this move variety-specific │
+  │ Check: Is this case-specific          │
   │        or factor-driven?             │
   │                                      │
-  │  • Macro factor (USD, rates)         │
-  │  • Sector factor (nonferrous beta)   │
-  │  • Idiosyncratic (variety-specific)  │
+  │  • Shared factor (macro, sector)     │
+  │  • Idiosyncratic (case-specific)     │
   └──────────────────────────────────────┘
 ```
 
-**Added:** Pre-analysis common-factor screening. Before attributing a price move to variety fundamentals, check if it's explained by shared factors.
+**Added:** Pre-analysis common-factor screening. Before attributing an outcome to case-specific causes, check if it's explained by shared factors.
 
-**Trigger:** Aluminum analysis error — attributed a rally to supply tightness when the entire nonferrous complex was rising on USD weakness. The variety-specific story was noise; the factor story was signal.
-
----
-
-### v4.0 — Cost Three-Layer Model
-
-```
-Price
-  │
-  ├── C1: Cash Operating Cost     ← hard floor (mines shut below this)
-  │
-  ├── A1: Full Production Cost    ← soft floor (includes depreciation)
-  │                                ← statistical center of gravity
-  │
-  └── A2: Marginal Cost           ← ceiling for surplus regime
-                                  ← floor for deficit regime
-```
-
-**Added:** Standardized cost model with three layers (C1, A1, A2) for supply-driven commodities. Replaces ad-hoc "cost support" analysis.
-
-**Trigger:** Aluminum oxide analysis — couldn't explain why AO traded below "cost" without a supply response. The old framework only had one cost layer; reality has three.
+**Trigger:** Analysis error — attributed a result to local causes when the entire category was moving on a shared driver. The case-specific story was noise; the factor story was signal.
 
 ---
 
-### v4.1 — Policy-Driven Variety Special Rules (Current)
+### v4.0 — Deeper Model with Special-Case Rules
 
 ```
-Policy-driven varieties (LC, SI, PS):
+Standard cases:
   ┌─────────────────────────────────────┐
-  │ 1. Regulation is the PRIMARY driver │
-  │ 2. Cost models are SECONDARY        │
-  │ 3. Technicals are TERTIARY          │
-  │ 4. Policy calendar > earnings calendar│
+  │ Layer 1: Threshold A (hard floor)   │
+  │ Layer 2: Threshold B (soft center)  │
+  │ Layer 3: Threshold C (regime-dependent)│
+  └─────────────────────────────────────┘
+
+Special cases:
+  ┌─────────────────────────────────────┐
+  │ Override: different primary driver  │
+  │ Standard layers become secondary    │
   └─────────────────────────────────────┘
 ```
 
-**Added:** Special analytical rules for policy-driven varieties, overriding the default three-layer weighting.
+**Added:** Multi-layer model for standard cases + explicit overrides for special cases. Replaces ad-hoc "it depends" analysis.
 
-**Trigger:** Silicon metal oversupply misread — applied the standard cost-floor framework to a variety where government capacity mandates matter more than production costs.
-
----
-
-## The Pattern · 规律
-
-Every version bump follows the same arc:
-
-```
-1. Error occurs (real analysis, real money on the line)
-       │
-2. Root cause identified (not "I was wrong" but "the framework was blind")
-       │
-3. Rule added to framework (not a general principle — a specific check)
-       │
-4. Rule tested against historical cases (does it catch past errors too?)
-       │
-5. New version deployed (old version archived, not deleted)
-```
-
-> **The framework doesn't get smarter by reading. It gets smarter by being wrong and refusing to be wrong the same way twice.**
+**Trigger:** Could not explain why a case behaved below "threshold" without the expected response. The old model had one layer; reality has multiple.
 
 ---
 
-## Current Limitations · 当前局限
+### v4.1 — Refined Special-Case Rules (Current)
 
-| Gap | Status |
-|-----|--------|
-| Regime-switching model (deficit ↔ surplus transition) | Not yet formalized |
-| Cross-commodity spread framework | Early stage |
-| Geopolitical risk premium quantification | Qualitative only |
-| Real-time sentiment integration | RSS feed processing, no NLP scoring |
+```
+Special cases:
+  ┌─────────────────────────────────────┐
+  │ 1. External driver is PRIMARY       │
+  │ 2. Standard layers are SECONDARY    │
+  │ 3. Timing framework is TERTIARY     │
+  │ 4. External calendar > standard cycle│
+  └─────────────────────────────────────┘
+```
 
-These are not bugs — they're the roadmap. Each will be addressed when the agent makes a mistake that traces back to one of these gaps.
+**Added:** Explicit priority ordering for special-case analysis, overriding the default layer weighting.
+
+**Trigger:** Applied the standard framework to a case where external factors matter more than internal ones.
+
+---
+
+## How to Apply This to Your Domain · 如何应用
+
+| Step | Your Action |
+|------|-------------|
+| 1 | When your agent produces a wrong output, don't just fix the output. Ask: *what was the framework blind to?* |
+| 2 | Add a specific check — not "be more careful," but "before step X, verify Y." |
+| 3 | Test the new rule against past cases. Would it have caught them? |
+| 4 | Bump the version. Archive the old framework. |
+| 5 | In 3 months, revisit: is the version still holding? |
+
+> **The framework doesn't get smarter by reading. It gets smarter by being wrong and refusing to be wrong the same way twice.**\
+> **框架不是靠阅读变聪明的。靠的是犯错误，然后拒绝以同样的方式再犯。**
 
 ---
 
