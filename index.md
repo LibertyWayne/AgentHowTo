@@ -13,6 +13,7 @@
 | [architecture.md](architecture.md) | Three-layer memory model, repo split, data flow, self-healing |
 | [workflow.md](workflow.md) | Daily rhythm, deep learning loop, cron jobs, intelligence briefing |
 | [task-priority.md](task-priority.md) | Priority stack, conflict resolution, failure handling |
+| **[OPERATING_MECHANISMS.md](OPERATING_MECHANISMS.md)** | **完整运作机制：记忆系统、Skills、Cron、数据管道、Gateway、知识库** |
 
 ---
 
