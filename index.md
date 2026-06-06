@@ -8,12 +8,13 @@
 
 | Page | Description |
 |------|-------------|
-| [README.md](README.md) | Project overview, architecture diagram, philosophy — **start here** |
-| [GETTING_STARTED.md](GETTING_STARTED.md) | **Step-by-step replication guide** — fork and build your own |
+| [BOOTSTRAP.md](BOOTSTRAP.md) | **🚀 从零搭建完整工作体系** — AI Agent 照做就行 |
+| [README.md](README.md) | Project overview, architecture diagram, philosophy |
+| [GETTING_STARTED.md](GETTING_STARTED.md) | Step-by-step replication guide — fork and build your own |
+| [OPERATING_MECHANISMS.md](OPERATING_MECHANISMS.md) | 完整运作机制参考：记忆、Skills、Cron、审计、知识管理 |
 | [architecture.md](architecture.md) | Three-layer memory model, repo split, data flow, self-healing |
 | [workflow.md](workflow.md) | Daily rhythm, deep learning loop, cron jobs, intelligence briefing |
 | [task-priority.md](task-priority.md) | Priority stack, conflict resolution, failure handling |
-| **[OPERATING_MECHANISMS.md](OPERATING_MECHANISMS.md)** | **完整运作机制：记忆系统、Skills、Cron、数据管道、Gateway、知识库** |
 
 ---
 

@@ -185,7 +185,9 @@ The agent improves by **making mistakes and refusing to repeat them.**
 
 | Page | What |
 |------|------|
-| **[`GETTING_STARTED.md`](GETTING_STARTED.md)** | **👈 Start here:** step-by-step replication guide |
+| **[`BOOTSTRAP.md`](BOOTSTRAP.md)** | **🚀 Start here:** 6-phase bootstrap — build the full system from scratch |
+| [`OPERATING_MECHANISMS.md`](OPERATING_MECHANISMS.md) | Complete operating mechanisms: memory, skills, cron, audit |
+| [`GETTING_STARTED.md`](GETTING_STARTED.md) | Step-by-step replication guide with code examples |
 | [`architecture.md`](architecture.md) | Three-layer memory model, repo split, data flow |
 | [`workflow.md`](workflow.md) | Five-phase daily pattern, quality gates, sync |
 | [`task-priority.md`](task-priority.md) | Priority framework, conflict resolution, failure handling |
@@ -355,7 +357,9 @@ Agent 不靠读更好的论文变聪明。靠**犯错误并拒绝重犯同样的
 
 | 页面 | 内容 |
 |------|------|
-| **[`GETTING_STARTED.md`](GETTING_STARTED.md)** | **👈 从这里开始：** 一步步复刻指南 |
+| **[`BOOTSTRAP.md`](BOOTSTRAP.md)** | **🚀 从这里开始：** 6 个 Phase 从零搭建完整体系 |
+| [`OPERATING_MECHANISMS.md`](OPERATING_MECHANISMS.md) | 完整运作机制参考：记忆、Skills、Cron、审计 |
+| [`GETTING_STARTED.md`](GETTING_STARTED.md) | 一步步复刻指南，含代码示例 |
 | [`architecture.md`](architecture.md) | 三层记忆模型、仓库分工、数据流 |
 | [`workflow.md`](workflow.md) | 五阶段工作流模式、质量门禁、同步 |
 | [`task-priority.md`](task-priority.md) | 优先级框架、冲突解决、失败处理 |
